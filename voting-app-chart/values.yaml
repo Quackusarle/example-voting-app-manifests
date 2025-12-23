@@ -12,7 +12,6 @@ vote:
     type: ClusterIP
     port: 80
   autoscaling:
-    enabled: true
     minReplicas: 1
     maxReplicas: 10
     targetCPU: 80
@@ -33,7 +32,6 @@ result:
     port: 80
     
   autoscaling:
-    enabled: true
     minReplicas: 1
     maxReplicas: 10
     targetCPU: 80
@@ -50,7 +48,6 @@ worker:
       cpu: "250m"
       
   autoscaling:
-    enabled: true
     minReplicas: 1
     maxReplicas: 10
     targetCPU: 80
@@ -75,3 +72,9 @@ db:
   service:
     type: ClusterIP
     port: 5432
+
+hpa:
+  targets:
+    - vote
+    - result
+    - worker
