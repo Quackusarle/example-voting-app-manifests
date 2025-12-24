@@ -1,6 +1,6 @@
 vote:
   repository: "quackusarle/vote"
-  tag: "14"
+  tag: "1"
   replicaCount: 1
 
   resources:
