@@ -1,6 +1,5 @@
 kube-prometheus-stack:
   grafana:
-    adminPassword: "admin" # Set cứng pass để đỡ phải đi tìm
     ingress:
       enabled: true
       ingressClassName: alb
@@ -9,7 +8,7 @@ kube-prometheus-stack:
         alb.ingress.kubernetes.io/target-type: ip
         alb.ingress.kubernetes.io/backend-protocol: HTTP
         alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]'
-      hosts: [""] # Wildcard
+      hosts: [""]
   prometheus:
     prometheusSpec:
       storageSpec:
