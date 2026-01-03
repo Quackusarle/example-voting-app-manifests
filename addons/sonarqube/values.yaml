@@ -7,8 +7,13 @@ sonarqube:
       alb.ingress.kubernetes.io/target-type: ip
       alb.ingress.kubernetes.io/backend-protocol: HTTP
       alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]'
+      alb.ingress.kubernetes.io/healthcheck-path: /api/system/status
+      alb.ingress.kubernetes.io/success-codes: "200"
+    
     hosts:
-      -name: ""
+      - name: ""
+        path: "/"
+
   persistence:
     enabled: true
     storageClass: ebs-sc
@@ -21,3 +26,7 @@ sonarqube:
       cpu: "500m"
     limits:
       memory: "2Gi"
+      cpu: "1000m"
+  plugins:
+    install: []
+  jvmOpts: "-Xms512m -Xmx1024m"
