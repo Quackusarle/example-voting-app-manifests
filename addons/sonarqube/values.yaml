@@ -30,3 +30,17 @@ sonarqube:
   plugins:
     install: []
   jvmOpts: "-Xms512m -Xmx1024m"
+
+postgresql:
+  enabled: true
+  persistence:
+    enabled: true
+    storageClass: "ebs-sc"
+    size: 5Gi
+  resources:
+    requests:
+      memory: "256Mi"
+      cpu: "250m"
+    limits:
+      memory: "512Mi"
+      cpu: "500m"
