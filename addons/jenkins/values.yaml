@@ -1,0 +1,23 @@
+jenkins:
+  controller:
+    serviceType: ClusterIP
+    resources:
+      requests:
+        cpu: "500m"
+        memory: "1Gi"
+      limits:
+        memory: "2Gi"
+    ingress:
+      enabled: true
+      ingressClassName: alb
+      annotations:
+        alb.ingress.kubernetes.io/scheme: internet-facing
+        alb.ingress.kubernetes.io/target-type: ip
+        alb.ingress.kubernetes.io/backend-protocol: HTTP
+        alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]'
+        alb.ingress.kubernetes.io/healthcheck-path: /login
+      hostName: null
+  persistence:
+    enabled: true
+    storageClass: ebs-sc
+    size: 8Gi

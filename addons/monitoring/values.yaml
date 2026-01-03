@@ -1,0 +1,23 @@
+sonarqube:
+  ingress:
+    enabled: true
+    ingressClassName: alb
+    annotations:
+      alb.ingress.kubernetes.io/scheme: internet-facing
+      alb.ingress.kubernetes.io/target-type: ip
+      alb.ingress.kubernetes.io/backend-protocol: HTTP
+      alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]'
+    hosts:
+      -name: ""
+  persistence:
+    enabled: true
+    storageClass: ebs-sc
+    size: 5Gi
+  initSysctl:
+    enabled: true
+  resources:
+    requests:
+      memory: "1Gi"
+      cpu: "500m"
+    limits:
+      memory: "2Gi"
