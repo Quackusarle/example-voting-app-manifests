@@ -8,14 +8,17 @@ kube-prometheus-stack:
         alb.ingress.kubernetes.io/target-type: ip
         alb.ingress.kubernetes.io/backend-protocol: HTTP
         alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]'
-      hosts: [""]
+      hosts: [] 
+      path: /
+
   prometheus:
     prometheusSpec:
       storageSpec:
-        volumeClaimTemplate:
-          spec:
-            storageClassName: ebs-sc
-            accessModes: ["ReadWriteOnce"]
-            resources:
-              requests:
-                storage: 10Gi
+        v1:
+          volumeClaimTemplate:
+            spec:
+              storageClassName: "ebs-sc"
+              accessModes: ["ReadWriteOnce"]
+              resources:
+                requests:
+                  storage: 10Gi
