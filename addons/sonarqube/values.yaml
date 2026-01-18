@@ -5,24 +5,23 @@ sonarqube:
   
   ingress:
     enabled: true
-    ingressClassName: alb
+    ingressClassName: "alb"
     annotations:
-      alb.ingress.kubernetes.io/scheme: internet-facing
-      alb.ingress.kubernetes.io/target-type: ip
-      alb.ingress.kubernetes.io/backend-protocol: HTTP
+      alb.ingress.kubernetes.io/scheme: "internet-facing"
+      alb.ingress.kubernetes.io/target-type: "ip"
+      alb.ingress.kubernetes.io/backend-protocol: "HTTP"
       alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]'
-      alb.ingress.kubernetes.io/healthcheck-path: /api/system/status
+      alb.ingress.kubernetes.io/healthcheck-path: "/api/system/status"
       alb.ingress.kubernetes.io/success-codes: "200"
-    
+
     hosts:
-      - name: null
+      - name: ""
         path: /
-        pathType: Prefix
 
   persistence:
     enabled: true
-    storageClass: ebs-sc
-    size: 5Gi
+    storageClass: "ebs-sc"
+    size: "5Gi"
   initSysctl:
     enabled: true
   resources:
@@ -41,7 +40,7 @@ postgresql:
   persistence:
     enabled: true
     storageClass: "ebs-sc"
-    size: 5Gi
+    size: "5Gi"
   resources:
     requests:
       memory: "256Mi"
