@@ -14,8 +14,6 @@ sonarqube:
       alb.ingress.kubernetes.io/healthcheck-path: /api/system/status
       alb.ingress.kubernetes.io/success-codes: "200"
     
-    # SỬA LẠI ĐOẠN NÀY: 
-    # Thay vì [] (mảng rỗng), hãy để 1 phần tử nhưng name là null
     hosts:
       - name: null
         path: /
