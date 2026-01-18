@@ -1,4 +1,6 @@
 sonarqube:
+  monitoringPasscode: "secretnha" 
+  
   ingress:
     enabled: true
     ingressClassName: alb
@@ -10,9 +12,7 @@ sonarqube:
       alb.ingress.kubernetes.io/healthcheck-path: /api/system/status
       alb.ingress.kubernetes.io/success-codes: "200"
     
-    hosts:
-      - name: ""
-        path: "/"
+    hosts: [] 
 
   persistence:
     enabled: true
@@ -27,12 +27,13 @@ sonarqube:
     limits:
       memory: "2Gi"
       cpu: "1000m"
-  plugins:
-    install: []
   jvmOpts: "-Xms512m -Xmx1024m"
 
 postgresql:
   enabled: true
+  image:
+    tag: "11-debian-11"
+    
   persistence:
     enabled: true
     storageClass: "ebs-sc"
@@ -44,5 +45,3 @@ postgresql:
     limits:
       memory: "512Mi"
       cpu: "500m"
-
-monitoringPasscode: "secretnha"
