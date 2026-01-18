@@ -19,11 +19,10 @@ kube-prometheus-stack:
   prometheus:
     prometheusSpec:
       storageSpec:
-        v1:
-          volumeClaimTemplate:
-            spec:
-              storageClassName: "ebs-sc"
-              accessModes: ["ReadWriteOnce"]
-              resources:
-                requests:
-                  storage: 10Gi
+        volumeClaimTemplate:
+          spec:
+            storageClassName: "ebs-sc"
+            accessModes: ["ReadWriteOnce"]
+            resources:
+              requests:
+                storage: 10Gi
