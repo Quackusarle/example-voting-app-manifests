@@ -13,10 +13,10 @@ sonarqube:
       alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]'
       alb.ingress.kubernetes.io/healthcheck-path: "/api/system/status"
       alb.ingress.kubernetes.io/success-codes: "200"
-
     hosts:
       - name: ""
         path: /
+        pathType: Prefix
 
   persistence:
     enabled: true
@@ -24,27 +24,22 @@ sonarqube:
     size: "5Gi"
   initSysctl:
     enabled: true
+
   resources:
     requests:
-      memory: "1Gi"
+      memory: "2Gi"
       cpu: "500m"
     limits:
-      memory: "2Gi"
+      memory: "3Gi"
       cpu: "1000m"
-  jvmOpts: "-Xms512m -Xmx1024m"
 
 postgresql:
   enabled: true
   image:
+    repository: "docker.io/bitnami/postgresql"
     tag: "11-debian-11"
+    
   persistence:
     enabled: true
     storageClass: "ebs-sc"
     size: "5Gi"
-  resources:
-    requests:
-      memory: "256Mi"
-      cpu: "250m"
-    limits:
-      memory: "512Mi"
-      cpu: "500m"
