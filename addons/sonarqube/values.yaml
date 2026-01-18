@@ -1,4 +1,6 @@
 sonarqube:
+  community:
+    enabled: true
   monitoringPasscode: "secretnha" 
   
   ingress:
@@ -11,7 +13,6 @@ sonarqube:
       alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]'
       alb.ingress.kubernetes.io/healthcheck-path: /api/system/status
       alb.ingress.kubernetes.io/success-codes: "200"
-    
     hosts: [] 
 
   persistence:
