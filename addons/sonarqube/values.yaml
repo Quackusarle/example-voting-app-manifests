@@ -44,3 +44,5 @@ postgresql:
     limits:
       memory: "512Mi"
       cpu: "500m"
+
+monitoringPasscode: "secretnha"
